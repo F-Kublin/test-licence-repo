@@ -1,8 +1,9 @@
 stages:
+  - InstallDependencies
   - CheckLicenses
 
 install_dependencies:
-  stage: InstallWebDependencies
+  stage: InstallDependencies
   image: node:alpine
   script:
     - npm ci
