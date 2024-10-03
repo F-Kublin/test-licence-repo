@@ -16,6 +16,6 @@ jobs:
           yarn add i -D danger
           yarn danger ci --failOnErrors --verbose --id LicenceAuditor
         env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECT_PATH: "."
