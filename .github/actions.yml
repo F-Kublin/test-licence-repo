@@ -1,0 +1,28 @@
+# An example implementation of a fully working pipeline with License Auditor on Github.
+
+# In this example, project consists of two packages: Web and Server
+# To validate licenses, you need to create separate steps for each
+# package. As in the example below.
+
+# In order License Auditor to work, dependencies in the package need
+# to be installed before running the step with the License Auditor.
+
+# A Github Access Token is required for posting comments to a PR. You can use any account
+# but is advised to create a separate "bot" account that is going to do that.
+
+name: CheckLicense
+
+on: [pull_request]
+jobs:
+  LicenseCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check web licenses
+        run: |
+          npm install -g yarn
+          yarn add -D danger
+          yarn danger ci --failOnErrors --verbose --id Web
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.HAL_ACCESS_TOKEN }} # Github Access Token stored in Github secrets.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROJECT_PATH: ./ # Relative to dangerfile/project root
