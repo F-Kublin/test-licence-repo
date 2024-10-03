@@ -13,8 +13,8 @@ jobs:
         run: npm i
       - name: Check licenses
         run: |
-          npm i -D danger
-          npm danger ci --failOnErrors --verbose --id LicenceAuditor
+          yarn add i -D danger
+          yarn danger ci --failOnErrors --verbose --id LicenceAuditor
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
